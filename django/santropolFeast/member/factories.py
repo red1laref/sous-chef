@@ -17,6 +17,7 @@ class MemberFactory (factory.DjangoModelFactory):
         member = super(MemberFactory, self).__init__(self, **kwargs)
         member.save()
 
+
 class AdressFactory (factory.DjangoModelFactory):
     class Meta:
         model = Address
@@ -42,4 +43,3 @@ class ContactFactory (factory.DjangoModelFactory):
 class ClientFactory (factory.DjangoModelFactory):
     class Meta:
         model = Client
-
