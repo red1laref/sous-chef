@@ -12,6 +12,13 @@ class MealFactory(factory.DjangoModelFactory):
     description = "A Simple Tomato Soupe"
     Ingredients = "Tomato"
 
+    @classmethod
+    def __init__(self, **kwargs):
+        ingredient = kwargs.pop('ingredient', None)
+        allergy = kwargs.pop('allergy', None)
+        meal = super(MealFactory, self).__init__(self, **kwargs)
+        meal.save()
+
 
 class IngredientFactory(factory.DjangoModelFactory):
     class Meta:
