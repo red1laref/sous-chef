@@ -26,6 +26,12 @@ class IngredientFactory(factory.DjangoModelFactory):
 
     Ingredient = "Tomato"
 
+    def __init__(self, **kwargs):
+        meal = kwargs.pop('meal', None)
+        allergy = kwargs.pop('allergy', None)
+        ingredients = super(IngredientFactory, self).__init__(self, **kwargs)
+        ingredients.save()
+
 
 class AllergyFactory(factory.DjangoModelFactory):
     class Meta:
@@ -34,3 +40,9 @@ class AllergyFactory(factory.DjangoModelFactory):
     nom = "Tomato"
     description = "A Simple Tomato"
     Ingredient = "Tomato"
+
+    def __init__(self, **kwargs):
+        meal = kwargs.pop('meal', None)
+        ingredients = kwargs.pop('ingredients', None)
+        allergy = super(AllergyFactory, self).__init__(self, **kwargs)
+        allergy.save()
