@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from django.conf import settings
 
 import math
 
@@ -195,4 +197,27 @@ class Client(models.Model):
         'meal.Allergy',
         related_name='allergic_clients',
         blank=True
+    )
+
+
+class Profile(models.Model):
+
+    class Meta:
+        verbose_name_plural = _('profiles')
+
+    user = models.OneToOneField(
+        User,
+        verbose_name=_('user'),
+    )
+
+    avatar = models.ImageField(
+        upload_to='avatars/',
+        null=True,
+        blank=True,
+        verbose_name=_('avatar'),
+    )
+
+    description = models.CharField(
+        max_length=200,
+        verbose_name=_('description')
     )
