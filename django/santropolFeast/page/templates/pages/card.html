@@ -2,10 +2,10 @@
 
 <div class="ui card">
     <div class="image">
-        {% if profile.avatar == None %}
-        <img src="{% static 'assets/katrina.jpg' %}">
-        {% else %}
+        {% if profile.avatar %}
         <img src="/media/{{ profile.avatar }}">
+        {% else %}
+        <img src="{% static 'assets/katrina.jpg' %}">
         {% endif %}
     </div>
     <div class="content">
