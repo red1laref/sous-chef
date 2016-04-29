@@ -160,5 +160,5 @@ STATICFILES_DIRS = (
     BASE_DIR + '/santropolFeast/static/',
 )
 STATIC_URL = '/static/'
-MEDIA_ROOT = BASE_DIR + '/santropolFeast/static/media/'
+MEDIA_ROOT = BASE_DIR + '/media/'
 MEDIA_URL = '/media/'
