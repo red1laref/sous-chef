@@ -4,6 +4,20 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from member.models import Client, Member
+from formtools.wizard.views import SessionWizardView
+from django.shortcuts import render_to_response
+
+
+class ClientWizard(SessionWizardView):
+
+    template_name = 'forms/form.html'
+
+    def done(self, form_list, form_dict, **kwargs):
+
+        client_basic_information = form_dict['ClientBasicInformation'].save()
+        client_address_information = form_dict[
+            'ClientAddressInformation'
+        ].save()
 
 
 class ClientList(generic.ListView):
