@@ -4,12 +4,21 @@ from django.utils.translation import ugettext_lazy as _
 from member.views import *
 from member.forms import *
 
+create_member_forms = (('basic_info', ClientBasicInformation),
+                       ('address_information', ClientAddressInformation),
+                       ('referent_information', ClientReferentInformation),
+                       ('dietary_restriction', ClientRestrictionsInformation),
+                       ('emergency_contact',
+                        ClientEmergencyContactInformation))
+
+
+member_wizard = ClientWizard.as_view(create_member_forms,
+                                     url_name="member_step")
+
 urlpatterns = patterns(
-    '', url(r'^create/$',
-            ClientWizard.as_view(
-                    [ClientBasicInformation, ClientAddressInformation,
-                     ClientReferentInformation, ClientPaymentInformation]
-            )),
+    '',
     url(_(r'^list/$'),
         ClientList.as_view(), name='list'),
+    url(r'^create/(?P<step>.+)/$', member_wizard,  name="member_step"),
+    url(r'^create/$', member_wizard, name="member"),
 )
