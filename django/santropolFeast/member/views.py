@@ -4,6 +4,21 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from member.models import Client, Member
+from formtools.wizard.views import NamedUrlSessionWizardView
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.forms import Form
+
+
+class ClientWizard(NamedUrlSessionWizardView):
+
+    template_name = 'forms/form.html'
+
+    def done(self, form_list, form_dict, **kwargs):
+
+        save_form(form_list)
+
+        return HttpResponseRedirect('/member/list')
 
 
 class ClientList(generic.ListView):
@@ -297,3 +312,9 @@ class ClientPreferencesUpdate(generic.UpdateView):
         context['myVariableOfContext'] = 0
 
         return context
+
+
+def save_form(form_list):
+
+    for form in form_list:
+        pass
