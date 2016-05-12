@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        Feast On Wheels
+        {%block title%}Feast On Wheels{%endblock%}
     </title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet">
@@ -76,8 +76,6 @@
                 <li>Drafts will now auto-save while writing</li>
             </ul>
         </div>
-
-        <h1>{%block title%}{%endblock%}</h1>
 
         {%block content%}{%endblock%}
 

@@ -12,11 +12,9 @@ from django.shortcuts import render
 from notification.models import Notification
 
 
-
 @login_required
 def home(request):
     notifications = list(Notification.objects.all())
-
     return render(request, 'pages/home.html', {'notifications': notifications})
 
 
