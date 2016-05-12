@@ -15,10 +15,20 @@ class ClientWizard(NamedUrlSessionWizardView):
     template_name = 'forms/form.html'
 
     def done(self, form_list, form_dict, **kwargs):
-
-        save_form(form_list)
-
+        self.form_dict = form_dict
+        self.save()
         return HttpResponseRedirect('/member/list')
+
+    def save(self):
+        """Save the client"""
+        basic_info = self.form_dict['basic_info']
+        print(basic_info.cleaned_data.get('first_name'))
+
+        member = Member.objects.create(
+            firstname=basic_info.cleaned_data.get('first_name'),
+            lastname=basic_info.cleaned_data.get('last_name'),
+        )
+        member.save()
 
 
 class ClientList(generic.ListView):
