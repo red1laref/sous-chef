@@ -6,19 +6,19 @@
     </div>
     <div class="content">
         <div class="ui small feed">
-            {% for note in notes %}
+            {% for notification in notifications %}
             <div class="event">
                 <div class="label">
-                    <i class="{% if note.priority == 'urgent' %} announcement red {% else %} green info {% endif %} icon"></i>
+                    <i class="{% if notification.priority == 'urgent' %} announcement red {% else %} green info {% endif %} icon"></i>
                 </div>
                 <div class="content">
                     <div class="date">
-                        {{ note.member }}
+                        {{ notification.member }}
                     </div>
                     <div class="summary">
-                        {{ note.note }}
+                        {{ notification.description }}
                         <div class="date">
-                            {{ note.date }}
+                            {{ notification.date }}
                         </div>
                     </div>
                 </div>
@@ -27,6 +27,6 @@
         </div>
      </div>
      <div class="extra content">
-         <a href="{% url 'member:notes' %}" class="ui button">{{ _('See all') }}</a>
+         <a href="{% url 'notification:list' %}" class="ui button">{{ _('See all') }}</a>
      </div>
 </div>
