@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
-from member.models import Client, Member, Address, Contact, Referencing
+from member.models import Client, Member, Address, Contact, Referencing, Note
 from formtools.wizard.views import *
 from django.shortcuts import *
 
@@ -409,6 +409,7 @@ class NoteList(generic.ListView):
     model = Note
     template_name = 'notes/list.html'
     context_object_name = 'notes'
+
 
 def mark_as_read(request, id):
     note = get_object_or_404(Note, pk=id)

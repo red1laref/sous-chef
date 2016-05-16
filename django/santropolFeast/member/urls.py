@@ -10,6 +10,7 @@ create_member_forms = (
     ('payment_information', ClientPaymentInformation),
     ('dietary_restriction', ClientRestrictionsInformation),
     ('emergency_contact', ClientEmergencyContactInformation),
+)
 
 member_wizard = ClientWizard.as_view(create_member_forms,
                                      url_name='member:member_step')
@@ -17,8 +18,9 @@ member_wizard = ClientWizard.as_view(create_member_forms,
 urlpatterns = patterns('',
                        url(r'^create/$', member_wizard, name='member_step'),
                        url(r'^create/(?P<step>.+)/$', member_wizard,
-                           name='member_step'),
+                          name='member_step'),
                        url(_(r'^list/$'), ClientList.as_view(), name='list'),
                        url(_(r'^notes/$'), NoteList.as_view(), name='notes'),
-                       url(_(r'^note/read/(?P<id>[0-9]{1})/$'), mark_as_read, name='read'),
+                       url(_(r'^note/read/(?P<id>[0-9]{1})/$'),
+                           mark_as_read, name='read'),
                        )
