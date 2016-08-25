@@ -12,7 +12,6 @@ from sqlalchemy import and_
 
 from member.apps import db_sa_session, db_sa_table
 from member.models import (Client, Member,
-                           RATE_TYPE_LOW_INCOME, RATE_TYPE_SOLIDARY,
                            Address, Option, Client_option, Restriction,
                            Client_avoid_ingredient, Client_avoid_component)
 from meal.models import (Menu, Menu_component, Component,
@@ -172,10 +171,10 @@ class Order(models.Model):
                 order.save()
                 num_orders_created += 1
             # TODO Use Parameters Model in member to store unit prices
-            if client.rate_type == RATE_TYPE_LOW_INCOME:
+            if client.rate_type == Client.RATE_TYPE_LOW_INCOME:
                 main_price = MAIN_PRICE_LOW_INCOME
                 side_price = SIDE_PRICE_LOW_INCOME
-            elif client.rate_type == RATE_TYPE_SOLIDARY:
+            elif client.rate_type == Client.RATE_TYPE_SOLIDARY:
                 main_price = MAIN_PRICE_SOLIDARY
                 side_price = SIDE_PRICE_SOLIDARY
             else:
