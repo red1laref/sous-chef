@@ -9,7 +9,8 @@ class Client_avoid_ingredient(models.Model):
     client = models.ForeignKey(
         Client,
         verbose_name=_('client'),
-        related_name='+')
+        related_name='client_avoid_ingredients'
+    )
 
     ingredient = models.ForeignKey(
         Ingredient,

@@ -9,12 +9,14 @@ class Restriction(models.Model):
     client = models.ForeignKey(
         Client,
         verbose_name=_('client'),
-        related_name='+')
+        related_name='client_restriction'
+    )
 
     restricted_item = models.ForeignKey(
         Restricted_item,
         verbose_name=_('restricted item'),
-        related_name='+')
+        related_name='+'
+    )
 
     def __str__(self):
         return "{} {} <restricts> {}".format(self.client.member.firstname,

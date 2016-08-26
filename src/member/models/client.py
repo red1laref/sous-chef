@@ -257,32 +257,28 @@ class Client(models.Model):
         """
         Returns restrictions associated to this client
         """
-        return Restriction.objects.filter(client=self.id)
+        return self.client_restriction.all()
 
     @property
     def food_preparation(self):
         """
         Returns specific food preparation associated to this client
         """
-        return Client_option.objects.filter(
-            client=self.id,
-            option__option_group='preparation'
-        )
+        return self.client_options.all(option__option_group='preparation')
 
     @property
     def ingredients_to_avoid(self):
         """
         Returns ingredients to avoid associated to this client
         """
-        return Client_avoid_ingredient.objects.filter(
-            client=self.id,
-        )
+        return self.client_avoid_ingredients.all()
 
     @property
     def components_to_avoid(self):
         """
         Returns component(s) to avoid associated to this client
         """
+        return self.client_avoid_components.all()
         return Client_avoid_component.objects.filter(
             client=self.id,
         )
@@ -301,7 +297,7 @@ class Client(models.Model):
         """
 
         prefs = {}
-        for day, str in DAYS_OF_WEEK:
+        for day, str in Client.DAYS_OF_WEEK:
             current = {}
             for component in [
                     'main_dish',

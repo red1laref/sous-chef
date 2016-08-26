@@ -9,7 +9,8 @@ class Client_option(models.Model):
     client = models.ForeignKey(
         Client,
         verbose_name=_('client'),
-        related_name='+')
+        related_name='client_options'
+    )
 
     option = models.ForeignKey(
         Option,
