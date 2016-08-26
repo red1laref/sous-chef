@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from .member import Member
 
 class Contact(models.Model):
 
@@ -33,7 +32,7 @@ class Contact(models.Model):
     )
 
     member = models.ForeignKey(
-        Member,
+        'member.Member',
         verbose_name=_('member'),
         related_name='member_contact',
     )

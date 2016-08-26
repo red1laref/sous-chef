@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .address import Address
+from .contact import Contact
 
 class Member(models.Model):
 
@@ -39,27 +40,27 @@ class Member(models.Model):
     @property
     def home_phone(self):
         try:
-            return self.member_contact.filter(type=HOME).first().value
+            return self.member_contact.filter(type=Contact.HOME).first().value
         except:
             return ""
 
     @property
     def cell_phone(self):
         try:
-            return self.member_contact.all().filter(type=CELL).first().value
+            return self.member_contact.all().filter(type=Contact.CELL).first().value
         except:
             return ""
 
     @property
     def work_phone(self):
         try:
-            return self.member_contact.all().filter(type=WORK).first().value
+            return self.member_contact.all().filter(type=Contact.WORK).first().value
         except:
             return ""
 
     @property
     def email(self):
         try:
-            return self.member_contact.all().filter(type=EMAIL).first().value
+            return self.member_contact.all().filter(type=Contact.EMAIL).first().value
         except:
             return ""

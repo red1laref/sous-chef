@@ -264,7 +264,8 @@ class Client(models.Model):
         """
         Returns specific food preparation associated to this client
         """
-        return self.client_options.all(option__option_group='preparation')
+        return self.client_options.all().filter(
+            option__option_group='preparation')
 
     @property
     def ingredients_to_avoid(self):
@@ -392,10 +393,10 @@ class Client(models.Model):
         if not self.meal_default_week:
             self.meal_default_week = {}
         self.meal_default_week[
-            component_group + '_' + DAYS_OF_WEEK[day][0] + '_quantity'
+            component_group + '_' + Client.DAYS_OF_WEEK[day][0] + '_quantity'
         ] = quantity
         if component_group == COMPONENT_GROUP_CHOICES_MAIN_DISH:
-            self.meal_default_week['size_' + DAYS_OF_WEEK[day][0]] = size
+            self.meal_default_week['size_' + Client.DAYS_OF_WEEK[day][0]] = size
         # DEBUG
         # print("SET client, compgroup, day, qty, size, dict",
         #       self, component_group, days[day], quantity, size,
