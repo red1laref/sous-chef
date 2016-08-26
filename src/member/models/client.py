@@ -1,4 +1,5 @@
 import math
+import datetime
 
 from django.db import models
 from django.db.models import Q
@@ -12,7 +13,6 @@ from annoying.fields import JSONField
 
 from .member import Member
 from .route import Route
-# from .restriction import Restriction
 from meal.models import COMPONENT_GROUP_CHOICES_MAIN_DISH
 
 class ClientManager(models.Manager):
@@ -366,9 +366,9 @@ class Client(models.Model):
         meals_default = client.meal_default_week
         if meals_default:
             quantity = meals_default.get(
-                component_group + '_' + DAYS_OF_WEEK[day][0] + '_quantity'
+                component_group + '_' + Client.DAYS_OF_WEEK[day][0] + '_quantity'
             ) or 0
-            size = meals_default.get('size_' + DAYS_OF_WEEK[day][0]) or ''
+            size = meals_default.get('size_' + Client.DAYS_OF_WEEK[day][0]) or ''
         else:
             quantity = 0
             size = ''
@@ -403,43 +403,42 @@ class Client(models.Model):
 
 
 class ClientFilter(FilterSet):
-    pass
 
-    # name = MethodFilter(
-    #     action='filter_search',
-    #     label=_('Search by name')
-    # )
-    #
-    # status = ChoiceFilter(
-    #     choices=(('', ''),) + Client.CLIENT_STATUS,
-    # )
-    #
-    # delivery_type = ChoiceFilter(
-    #     choices=(('', ''),) + Client.DELIVERY_TYPE
-    # )
-    #
-    # class Meta:
-    #     model = Client
-    #     fields = ['route', 'status', 'delivery_type']
-    #
-    # @staticmethod
-    # def filter_search(queryset, value):
-    #     if not value:
-    #         return queryset
-    #
-    #     name_contains = Q()
-    #     names = value.split(' ')
-    #
-    #     for name in names:
-    #
-    #         firstname_contains = Q(
-    #             member__firstname__icontains=name
-    #         )
-    #
-    #         lastname_contains = Q(
-    #             member__lastname__icontains=name
-    #         )
-    #
-    #         name_contains |= firstname_contains | lastname_contains
-    #
-    #     return queryset.filter(name_contains)
+    name = MethodFilter(
+        action='filter_search',
+        label=_('Search by name')
+    )
+
+    status = ChoiceFilter(
+        choices=(('', ''),) + Client.CLIENT_STATUS,
+    )
+
+    delivery_type = ChoiceFilter(
+        choices=(('', ''),) + Client.DELIVERY_TYPE
+    )
+
+    class Meta:
+        model = Client
+        fields = ['route', 'status', 'delivery_type']
+
+    @staticmethod
+    def filter_search(queryset, value):
+        if not value:
+            return queryset
+
+        name_contains = Q()
+        names = value.split(' ')
+
+        for name in names:
+
+            firstname_contains = Q(
+                member__firstname__icontains=name
+            )
+
+            lastname_contains = Q(
+                member__lastname__icontains=name
+            )
+
+            name_contains |= firstname_contains | lastname_contains
+
+        return queryset.filter(name_contains)

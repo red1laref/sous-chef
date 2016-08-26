@@ -1,12 +1,8 @@
 # coding=utf-8
 import factory
 import random
-from member.models import (
-    Member, Client, Contact, Route, Address, Referencing,
-    CONTACT_TYPE_CHOICES, GENDER_CHOICES, PAYMENT_TYPE,
-    DELIVERY_TYPE, DAYS_OF_WEEK, RATE_TYPE,
-    ClientScheduledStatus
-)
+from member.models import Member, Client, Contact, Route, Address, \
+    Referencing, ClientScheduledStatus
 from meal.models import COMPONENT_GROUP_CHOICES
 from django.contrib.auth.models import User
 
@@ -46,7 +42,7 @@ class RouteFactory(factory.DjangoModelFactory):
 
 def generate_json():
     json = {}
-    for day, translation in DAYS_OF_WEEK:
+    for day, translation in Client.DAYS_OF_WEEK:
         for meal, Meal in COMPONENT_GROUP_CHOICES:
             json['{}_{}_quantity'.format(meal, day)] = random.choice([0, 1])
     return json
@@ -60,10 +56,10 @@ class ClientFactory (factory.DjangoModelFactory):
     member = factory.SubFactory(MemberFactory)
     billing_member = member
     billing_payment_type = factory.LazyAttribute(
-        lambda x: random.choice(PAYMENT_TYPE)[0]
+        lambda x: random.choice(Client.PAYMENT_TYPE)[0]
     )
     rate_type = factory.LazyAttribute(
-        lambda x: random.choice(RATE_TYPE)[0]
+        lambda x: random.choice(Client.RATE_TYPE)[0]
     )
     member = member
     emergency_contact = factory.SubFactory(MemberFactory)
@@ -80,10 +76,10 @@ class ClientFactory (factory.DjangoModelFactory):
     )
     alert = factory.Faker('sentence')
     delivery_type = factory.LazyAttribute(
-        lambda x: random.choice(DELIVERY_TYPE)[0]
+        lambda x: random.choice(Client.DELIVERY_TYPE)[0]
     )
     gender = factory.LazyAttribute(
-        lambda x: random.choice(GENDER_CHOICES)[0]
+        lambda x: random.choice(Client.GENDER_CHOICES)[0]
     )
     birthdate = factory.Faker('date')
     route = factory.LazyAttribute(

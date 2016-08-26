@@ -575,8 +575,6 @@ class ClientList(generic.ListView):
         uf = ClientFilter(self.request.GET)
         return uf.qs
 
-        # The queryset must be client
-
     def get_context_data(self, **kwargs):
         uf = ClientFilter(self.request.GET, queryset=self.get_queryset())
 
