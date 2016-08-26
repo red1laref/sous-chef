@@ -23,7 +23,6 @@ from member.models import (
     Client_option,
     ClientFilter,
     ClientScheduledStatusFilter,
-    DAYS_OF_WEEK,
     Route,
     Client_avoid_ingredient,
     Client_avoid_component,
@@ -217,7 +216,7 @@ class ClientWizard(NamedUrlSessionWizardView):
     def get_context_data(self, **kwargs):
         context = super(ClientWizard, self).get_context_data(**kwargs)
 
-        context["weekday"] = DAYS_OF_WEEK
+        context["weekday"] = Client.DAYS_OF_WEEK
         context["meals"] = COMPONENT_GROUP_CHOICES
 
         if 'client_id' in kwargs:
@@ -289,7 +288,7 @@ class ClientWizard(NamedUrlSessionWizardView):
     def save_json(self, dictonary):
         json = {}
 
-        for days, Days in DAYS_OF_WEEK:
+        for days, Days in Client.DAYS_OF_WEEK:
             json['size_{}'.format(days)] = dictonary.get(
                 'size_{}'.format(days)
             )

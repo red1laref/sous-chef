@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from member.models import Client, Option
+from .client import Client
+from .option import Option
 
 class Client_option(models.Model):
+
     client = models.ForeignKey(
         Client,
         verbose_name=_('client'),

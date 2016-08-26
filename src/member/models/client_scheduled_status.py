@@ -6,11 +6,14 @@ from django.utils.translation import ugettext_lazy as _
 from django_filters import FilterSet, MethodFilter, CharFilter, ChoiceFilter, \
     BooleanFilter
 
-from member.models import Client
+from .client import Client
 from note.models import Note
 
 class ClientScheduledStatus(models.Model):
     """ Scheduled status for a client."""
+
+    class Meta:
+        ordering = ['change_date']
 
     START = 'START'
     END = 'END'
@@ -77,9 +80,6 @@ class ClientScheduledStatus(models.Model):
         choices=OPERATION_STATUS,
         default=TOBEPROCESSED
     )
-
-    class Meta:
-        ordering = ['change_date']
 
     def __str__(self):
         return "Update {} status: from {} to {}, on {}".format(

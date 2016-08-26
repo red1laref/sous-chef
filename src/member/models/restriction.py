@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from member.models import Client
+from .client import Client
 from meal.models import Restricted_item
 
 class Restriction(models.Model):
+
     client = models.ForeignKey(
-        'member.Client',
+        Client,
         verbose_name=_('client'),
         related_name='+')
 

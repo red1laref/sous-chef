@@ -3,15 +3,15 @@ from django.utils.translation import ugettext_lazy as _
 
 class Option(models.Model):
 
+    class Meta:
+        verbose_name_plural = _('options')
+
     OPTION_GROUP_CHOICES = (
         ('main dish size', _('Main dish size')),
         ('dish', _('Dish')),
         ('preparation', _('Preparation')),
         ('other order item', _('Other order item')),
     )
-
-    class Meta:
-        verbose_name_plural = _('options')
 
     # Information about options added to the meal
     name = models.CharField(

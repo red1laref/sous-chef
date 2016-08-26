@@ -10,7 +10,9 @@ from django_filters import FilterSet, MethodFilter, CharFilter, ChoiceFilter, \
     BooleanFilter
 from annoying.fields import JSONField
 
-from member.models import Member, Route
+from .member import Member
+from .route import Route
+# from .restriction import Restriction
 from meal.models import COMPONENT_GROUP_CHOICES_MAIN_DISH
 
 class ClientManager(models.Manager):
@@ -56,6 +58,9 @@ class ContactClientManager(ClientManager):
 
 
 class Client(models.Model):
+
+    class Meta:
+        verbose_name_plural = _('clients')
 
     DAYS_OF_WEEK = (
         ('monday', _('Monday')),
@@ -117,9 +122,6 @@ class Client(models.Model):
         ('en', _('English')),
         ('fr', _('French')),
     )
-
-    class Meta:
-        verbose_name_plural = _('clients')
 
     billing_member = models.ForeignKey(
         Member,

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from member.models import Address
+from .address import Address
 
 class Member(models.Model):
 

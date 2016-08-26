@@ -4,11 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from meal.models import Ingredient, Component, COMPONENT_GROUP_CHOICES, \
     Restricted_item
 from order.models import SIZE_CHOICES
-from member.models import (
-    Member, Client, RATE_TYPE, CONTACT_TYPE_CHOICES, Option,
-    GENDER_CHOICES, PAYMENT_TYPE, DELIVERY_TYPE,
-    DAYS_OF_WEEK, Route, ClientScheduledStatus
-)
+from member.models import Member, Client, Option, Route, \
+    ClientScheduledStatus, Contact
 
 
 class ClientBasicInformation (forms.Form):
@@ -26,7 +23,7 @@ class ClientBasicInformation (forms.Form):
     )
 
     gender = forms.ChoiceField(
-        choices=GENDER_CHOICES,
+        choices=Client.GENDER_CHOICES,
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
 
@@ -39,7 +36,7 @@ class ClientBasicInformation (forms.Form):
     birthdate = forms.DateField(label=_("Birthday"))
 
     contact_type = forms.ChoiceField(
-        choices=CONTACT_TYPE_CHOICES,
+        choices=Contact.CONTACT_TYPE_CHOICES,
         label=_("Contact Type"),
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
@@ -133,7 +130,7 @@ class ClientRestrictionsInformation(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ClientRestrictionsInformation, self).__init__(*args, **kwargs)
 
-        for day, translation in DAYS_OF_WEEK:
+        for day, translation in Client.DAYS_OF_WEEK:
             self.fields['size_{}'.format(day)] = forms.ChoiceField(
                 choices=SIZE_CHOICES,
                 widget=forms.Select(attrs={'class': 'ui dropdown'}),
@@ -157,7 +154,7 @@ class ClientRestrictionsInformation(forms.Form):
 
     delivery_type = forms.ChoiceField(
         label=_('Type'),
-        choices=DELIVERY_TYPE,
+        choices=Client.DELIVERY_TYPE,
         required=True,
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
@@ -165,7 +162,7 @@ class ClientRestrictionsInformation(forms.Form):
     delivery_schedule = forms.MultipleChoiceField(
         label=_('Schedule'),
         initial='Select days of week',
-        choices=DAYS_OF_WEEK,
+        choices=Client.DAYS_OF_WEEK,
         widget=forms.SelectMultiple(attrs={'class': 'ui dropdown'}),
         required=False,
     )
@@ -284,7 +281,7 @@ class ClientPaymentInformation(MemberForm):
 
     facturation = forms.ChoiceField(
         label=_("Billing Type"),
-        choices=RATE_TYPE,
+        choices=Client.RATE_TYPE,
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
 
@@ -298,7 +295,7 @@ class ClientPaymentInformation(MemberForm):
 
     billing_payment_type = forms.ChoiceField(
         label=_("Payment Type"),
-        choices=PAYMENT_TYPE,
+        choices=Client.PAYMENT_TYPE,
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
 
@@ -347,7 +344,7 @@ class ClientEmergencyContactInformation(MemberForm):
 
     contact_type = forms.ChoiceField(
         label=_("Contact Type"),
-        choices=CONTACT_TYPE_CHOICES,
+        choices=Contact.CONTACT_TYPE_CHOICES,
         widget=forms.Select(attrs={'class': 'ui dropdown'})
     )
 

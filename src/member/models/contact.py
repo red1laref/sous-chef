@@ -1,9 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from member.models import Member
+from .member import Member
 
 class Contact(models.Model):
+
+    class Meta:
+        verbose_name_plural = _('contacts')
 
     HOME = 'Home phone'
     CELL = 'Cell phone'
@@ -16,9 +19,6 @@ class Contact(models.Model):
         (WORK, WORK),
         (EMAIL, EMAIL),
     )
-
-    class Meta:
-        verbose_name_plural = _('contacts')
 
     # Member contact information
     type = models.CharField(

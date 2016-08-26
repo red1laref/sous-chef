@@ -3,7 +3,8 @@ import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from member.models import Member, Client
+from .member import Member
+from .client import Client
 
 class Referencing (models.Model):
 
