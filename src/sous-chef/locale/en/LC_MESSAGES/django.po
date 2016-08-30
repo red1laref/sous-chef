@@ -17,32 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: billing/models.py:35
-msgid "total_amount"
+#: sous-chef/templates/system/menu.html:21
+msgid "Clients"
 msgstr ""
 
-#: billing/models.py:60
-msgid "Search by name"
-msgstr "Recherche par nom"
+#: sous-chef/templates/system/menu.html:33
+msgid "Orders"
+msgstr ""
 
-#: billing/templates/list_billing.html:5
-#: billing/templates/list_billing.html:32
-#: billing/templates/view_billing.html:5
+#: sous-chef/templates/system/menu.html:36
+msgid "Staff Notes"
+msgstr ""
+
+#: sous-chef/templates/system/menu.html:43
+msgid "Kitchen Count"
+msgstr ""
+
+#: sous-chef/templates/system/menu.html:44
 msgid "Billing"
-msgstr "Facturation"
+msgstr ""
 
-#: billing/templates/list_billing.html:75
-msgid "Client"
-msgstr "Client"
+#: sous-chef/templates/system/menu.html:45
+msgid "Admin"
+msgstr ""
 
-#: billing/templates/list_billing.html:76
-msgid "Date"
-msgstr "Date"
-
-#: billing/templates/list_billing.html:77
-msgid "Amount"
-msgstr "Montant"
-
-#: billing/templates/list_billing.html:78
-msgid "Actions"
-msgstr "Actions"
+#: sous-chef/templates/system/menu.html:46
+msgid "Logout"
+msgstr ""

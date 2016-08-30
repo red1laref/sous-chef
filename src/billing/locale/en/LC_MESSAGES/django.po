@@ -23,26 +23,26 @@ msgstr ""
 
 #: billing/models.py:60
 msgid "Search by name"
-msgstr "Recherche par nom"
+msgstr ""
 
 #: billing/templates/list_billing.html:5
 #: billing/templates/list_billing.html:32
 #: billing/templates/view_billing.html:5
 msgid "Billing"
-msgstr "Facturation"
+msgstr ""
 
 #: billing/templates/list_billing.html:75
 msgid "Client"
-msgstr "Client"
+msgstr ""
 
 #: billing/templates/list_billing.html:76
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 #: billing/templates/list_billing.html:77
 msgid "Amount"
-msgstr "Montant"
+msgstr ""
 
 #: billing/templates/list_billing.html:78
 msgid "Actions"
-msgstr "Actions"
+msgstr ""
