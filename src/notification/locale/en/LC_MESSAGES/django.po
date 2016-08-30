@@ -17,32 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: billing/models.py:35
-msgid "total_amount"
+#: notification/models.py:9
+msgid "notifications"
 msgstr ""
 
-#: billing/models.py:60
-msgid "Search by name"
-msgstr "Recherche par nom"
+#: notification/models.py:12
+msgid "description"
+msgstr ""
 
-#: billing/templates/list_billing.html:5
-#: billing/templates/list_billing.html:32
-#: billing/templates/view_billing.html:5
-msgid "Billing"
-msgstr "Facturation"
-
-#: billing/templates/list_billing.html:75
-msgid "Client"
-msgstr "Client"
-
-#: billing/templates/list_billing.html:76
-msgid "Date"
-msgstr "Date"
-
-#: billing/templates/list_billing.html:77
-msgid "Amount"
-msgstr "Montant"
-
-#: billing/templates/list_billing.html:78
-msgid "Actions"
-msgstr "Actions"
+#: notification/models.py:17
+msgid "member"
+msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 18:06+0000\n"
+"POT-Creation-Date: 2016-08-30 18:19+0000\n"
 "PO-Revision-Date: 2016-04-21 20:13-0400\n"
 "Last-Translator: Julie Moussu <julie.moussu@savoirfairelinux.com>\n"
 "Language-Team: \n"
@@ -143,12 +143,12 @@ msgstr ""
 msgid "component group"
 msgstr ""
 
-#: order/templates/_form.html:3 order/templates/_form.html:50
+#: order/templates/_form.html:5 order/templates/_form.html:52
 #: order/templates/update.html:18
 msgid "Required information missing"
 msgstr ""
 
-#: order/templates/_form.html:4 order/templates/_form.html:51
+#: order/templates/_form.html:6 order/templates/_form.html:53
 #: order/templates/update.html:19
 msgid ""
 "Please review the form to make sure that all required fields are filled."
